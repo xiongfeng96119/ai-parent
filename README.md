@@ -1,2 +1,2 @@
-# ai-parent
-爱购商城后台代码
+# lai-parent
+来购商城后台代码
