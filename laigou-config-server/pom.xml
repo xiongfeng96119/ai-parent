@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>laigou-parent</artifactId>
-        <groupId>cn.itsource</groupId>
+        <groupId>cn.itsource.laigou</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -16,13 +16,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!--config-server-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-
         <!--eureka-client依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -37,4 +35,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -7,12 +7,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="plat-interface" />
+        <module name="product-service" />
         <module name="laigou-zuul" />
         <module name="plat-service" />
+        <module name="common-interface" />
+        <module name="basic-generator" />
         <module name="laigou-config-server" />
         <module name="laigou-eureka" />
+        <module name="product-interface" />
         <module name="basic-util" />
+        <module name="common-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="redis-interface" target="1.5" />
+      <module name="redis-service" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

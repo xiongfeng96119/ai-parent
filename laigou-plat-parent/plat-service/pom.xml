@@ -4,13 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>laigou-plat-parent</artifactId>
-        <groupId>cn.itsource</groupId>
+        <groupId>cn.itsource.laigou</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>plat-service</artifactId>
     <dependencies>
+
         <!--web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -23,12 +24,12 @@
         </dependency>
         <!--basic-util-->
         <dependency>
-            <groupId>cn.itsource</groupId>
+            <groupId>cn.itsource.laigou</groupId>
             <artifactId>basic-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>cn.itsource</groupId>
+            <groupId>cn.itsource.laigou</groupId>
             <artifactId>plat-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -43,7 +44,15 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
+
+        <!--config-client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
