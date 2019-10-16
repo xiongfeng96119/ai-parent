@@ -16,7 +16,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/laigou-product-parent/product-service/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/laigou-common-parent/common-service/src/main/java/cn/itsource/laigou/controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -24,21 +24,21 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.14772727" />
     <property name="project.structure.side.proportion" value="0.25577417" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.itsource.laigou.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-common-parent\common-service\src\main\java\cn\itsource\laigou\controller" />
       <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\resources" />
       <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-common-parent\common-service\src\main\java" />
       <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-common-parent\common-interface\src\main\java" />
       <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-plat-parent\plat-service\src\main\resources" />
-      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\java\cn\itsource\laigou" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -58,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CommonApplication">
+  <component name="RunManager" selected="Spring Boot.ZuulApplication">
     <configuration name="CommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="common-service" />
       <extension name="coverage">
@@ -81,6 +81,13 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itsource.laigou.ConfigServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="laigou-eureka" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itsource.laigou.util.laigou.EurekaApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,10 +133,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.CommonApplication" />
-        <item itemvalue="Spring Boot.PlatApplication" />
-        <item itemvalue="Spring Boot.ZuulApplication" />
         <item itemvalue="Spring Boot.ProductApplicaiton" />
+        <item itemvalue="Spring Boot.ZuulApplication" />
+        <item itemvalue="Spring Boot.PlatApplication" />
+        <item itemvalue="Spring Boot.CommonApplication" />
         <item itemvalue="Spring Boot.ConfigServerApplication" />
       </list>
     </recent_temporary>
@@ -137,22 +144,17 @@
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
-        <option name="contentProportion" value="0.34261408" />
+        <option name="contentProportion" value="0.2575406" />
         <treeState>
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@73a88444" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afc6d676" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@73a88444" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@d1d3f48e" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@73a88444" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afbba6a8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afc6d676" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@33102a26" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
           </expand>
           <select />
@@ -172,6 +174,11 @@
       <updated>1570998204137</updated>
       <workItem from="1570998206603" duration="6328000" />
       <workItem from="1571014714992" duration="13111000" />
+      <workItem from="1571129532437" duration="4224000" />
+      <workItem from="1571136458725" duration="54000" />
+      <workItem from="1571136574245" duration="4079000" />
+      <workItem from="1571253238441" duration="1745000" />
+      <workItem from="1571260949050" duration="442000" />
     </task>
     <servers />
   </component>

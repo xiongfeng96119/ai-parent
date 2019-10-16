@@ -68,7 +68,6 @@ public class ProductTypeController {
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<ProductType> list(){
-
         return productTypeService.list(null);
     }
 
