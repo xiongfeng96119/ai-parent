@@ -6,6 +6,8 @@ import cn.itsource.laigou.query.BrandQuery;
 import cn.itsource.laigou.util.AjaxResult;
 import cn.itsource.laigou.util.PageList;
 import cn.itsource.laigou.util.StrUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +20,10 @@ public class BrandController {
     public IBrandService brandService;
 
     /**
-     * 保存和修改公用的
-     * @param brand  传递的实体
-     * @return Ajaxresult转换结果
-     */
+    * 保存和修改公用的
+    * @param brand  传递的实体
+    * @return Ajaxresult转换结果
+    */
     @RequestMapping(value="/add",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Brand brand){
         try {
@@ -38,22 +40,23 @@ public class BrandController {
     }
 
     /**
-     * 删除对象信息
-     * @param id
-     * @return
-     */
+    * 删除对象信息
+    * @param id
+    * @return
+    */
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
         try {
             brandService.removeById(id);
             return AjaxResult.me();
         } catch (Exception e) {
-            e.printStackTrace();
+        e.printStackTrace();
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
         }
     }
+
     /**
-     * 批量删除
+     * 批量删除对象信息
      * @param ids
      * @return
      */
@@ -77,24 +80,29 @@ public class BrandController {
         return brandService.getById(id);
     }
 
+
     /**
-     * 查看所有
-     * @return
-     */
+    * 查看所有
+    * @return
+    */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Brand> list(){
 
         return brandService.list(null);
     }
 
+
     /**
-     * 分页查询数据
-     * @param query 查询对象
-     * @return PageList 分页对象
-     */
+    * 分页查询数据
+    *
+    * @param query 查询对象
+    * @return PageList 分页对象
+    */
     @RequestMapping(value = "/json",method = RequestMethod.POST)
     public PageList<Brand> json(@RequestBody BrandQuery query)
     {
         return brandService.queryPage(query);
     }
+
+
 }

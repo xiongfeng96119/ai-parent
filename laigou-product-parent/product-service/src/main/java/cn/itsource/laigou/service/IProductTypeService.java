@@ -11,9 +11,10 @@ import java.util.List;
  * </p>
  *
  * @author solargen
- * @since 2019-10-14
+ * @since 2019-10-12
  */
 public interface IProductTypeService extends IService<ProductType> {
+
     /**
      * 加载类型树
      * @return

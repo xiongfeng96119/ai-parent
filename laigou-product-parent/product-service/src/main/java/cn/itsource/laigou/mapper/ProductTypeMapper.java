@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author solargen
- * @since 2019-10-14
+ * @since 2019-10-12
  */
 public interface ProductTypeMapper extends BaseMapper<ProductType> {
 

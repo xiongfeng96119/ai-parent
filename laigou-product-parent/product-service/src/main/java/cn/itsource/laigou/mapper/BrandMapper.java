@@ -8,16 +8,22 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * <p>
  * 品牌信息 Mapper 接口
  * </p>
  *
  * @author solargen
- * @since 2019-10-14
+ * @since 2019-10-12
  */
 @Component
 public interface BrandMapper extends BaseMapper<Brand> {
+
+    //mapper高级查询+分页
+    //List<Brand> queryPage(BrandQuery query);
+
     /**
      * mybatis-plus对自定义sql的分页查询
      * （1）返回类型为IPage
@@ -29,4 +35,6 @@ public interface BrandMapper extends BaseMapper<Brand> {
      * @param query
      * @return
      */
-    IPage<Brand> queryPage(Page page, @Param("query") BrandQuery query);}
+    IPage<Brand> queryPage(Page page, @Param("query") BrandQuery query);
+
+}

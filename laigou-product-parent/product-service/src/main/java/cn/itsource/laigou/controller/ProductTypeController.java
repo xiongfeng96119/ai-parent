@@ -19,10 +19,10 @@ public class ProductTypeController {
     public IProductTypeService productTypeService;
 
     /**
-     * 保存和修改公用的
-     * @param productType  传递的实体
-     * @return Ajaxresult转换结果
-     */
+    * 保存和修改公用的
+    * @param productType  传递的实体
+    * @return Ajaxresult转换结果
+    */
     @RequestMapping(value="/add",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody ProductType productType){
         try {
@@ -39,17 +39,17 @@ public class ProductTypeController {
     }
 
     /**
-     * 删除对象信息
-     * @param id
-     * @return
-     */
+    * 删除对象信息
+    * @param id
+    * @return
+    */
     @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
         try {
             productTypeService.removeById(id);
             return AjaxResult.me();
         } catch (Exception e) {
-            e.printStackTrace();
+        e.printStackTrace();
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
         }
     }
@@ -63,21 +63,22 @@ public class ProductTypeController {
 
 
     /**
-     * 查看所有
-     * @return
-     */
+    * 查看所有
+    * @return
+    */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<ProductType> list(){
+
         return productTypeService.list(null);
     }
 
 
     /**
-     * 分页查询数据
-     *
-     * @param query 查询对象
-     * @return PageList 分页对象
-     */
+    * 分页查询数据
+    *
+    * @param query 查询对象
+    * @return PageList 分页对象
+    */
     @RequestMapping(value = "/json",method = RequestMethod.POST)
     public PageList<ProductType> json(@RequestBody ProductTypeQuery query)
     {
@@ -109,4 +110,7 @@ public class ProductTypeController {
             return AjaxResult.me().setSuccess(false).setMessage("失败!"+e.getMessage());
         }
     }
+
+
+
 }

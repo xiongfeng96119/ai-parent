@@ -11,18 +11,20 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+
 /**
  * <p>
  * 品牌信息 服务实现类
  * </p>
  *
  * @author solargen
- * @since 2019-10-14
+ * @since 2019-10-12
  */
 @Service
 public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements IBrandService {
+
     /**
-     * 分页+高级查询
+     * 分页高级查询
      * @param query
      * @return
      */
@@ -33,6 +35,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
         PageList<Brand> pageList = new PageList<>(brandIPage.getTotal(),brandIPage.getRecords());
         return pageList;
     }
+
     @Override
     public boolean save(Brand brand) {
         //创建时间
@@ -56,4 +59,5 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
         brand.setProductTypeId(brand.getProductType().getId());
         return super.updateById(brand);
     }
+
 }

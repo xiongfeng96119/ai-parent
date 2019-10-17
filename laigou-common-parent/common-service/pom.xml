@@ -66,9 +66,9 @@
         </dependency>
         <!--fastdfs-->
         <dependency>
-            <groupId>cn.itsource</groupId>
+            <groupId>org.csource.fastdfs</groupId>
             <artifactId>fastdfs</artifactId>
-            <version>1.20</version>
+            <version>1.2</version>
         </dependency>
     </dependencies>
     <build>

@@ -8,8 +8,8 @@ import cn.itsource.laigou.service.IProductTypeService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +25,11 @@ import java.util.Map;
  * </p>
  *
  * @author solargen
- * @since 2019-10-14
+ * @since 2019-10-12
  */
 @Service
 public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, ProductType> implements IProductTypeService {
+
     @Autowired
     private RedisClient redisClient;
     @Autowired
@@ -40,23 +41,21 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     @Override
     public void genHomePage() {
         //先根据product.type.vm模板生成product.type.vm.html
-
-        String templatePath = "C:\\Program Files\\JetBrains\\IdeaProjects\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm";//模板路径
-        String targetPath = "C:\\Program Files\\JetBrains\\IdeaProjects\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm.html";
+        String templatePath = "D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm";//模板路径
+        String targetPath = "D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm.html";
         List<ProductType> productTypes = loadTypeTree();
-        staticPageClient.generateStaticPage(templatePath, targetPath, productTypes);
+        staticPageClient.generateStaticPage(templatePath,targetPath,productTypes);
 
         //再根据home.vm生成html.html
-        templatePath = "C:\\Program Files\\JetBrains\\IdeaProjects\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\home.vm";
-        targetPath = "C:\\Program Files\\JetBrains\\IdeaProjects\\parent-web-server\\ecommerce\\home.html";
-        Map<String, Object> model = new HashMap<>();
-        model.put("staticRoot", "C:\\Program Files\\JetBrains\\IdeaProjects\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\");
-        staticPageClient.generateStaticPage(templatePath, targetPath, model);
+        templatePath = "D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\home.vm";
+        targetPath = "D:\\ymsd\\laigou-web-parent\\ecommerce\\home.html";
+        Map<String,Object> model = new HashMap<>();
+        model.put("staticRoot","D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\");
+        staticPageClient.generateStaticPage(templatePath,targetPath,model);
     }
 
     /**
      * 加载类型树
-     *
      * @return
      */
     @Override
@@ -68,24 +67,24 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         //解决缓存穿透问题代码   同步代码块，双重验证，在代码块外部判断redis中是否有值
         //代码块中再次后取redis的数据进行判断
         List<ProductType> productTypes = null;
-        if (StringUtils.isEmpty(productTypesStr)) {
-            synchronized (this) {
+        if(StringUtils.isEmpty(productTypesStr)){
+            synchronized (this){
                 productTypesStr = redisClient.get("productTypes");
-                if (StringUtils.isEmpty(productTypesStr)) {
+                if(StringUtils.isEmpty(productTypesStr)){
                     //查询数据库
                     productTypes = loadTypeTreeLoop2();
                     System.out.println("查询数据库..........");
                     //把数据缓存到redis中-json字符串
-                    productTypesStr = JSON.toJSONString(productTypes);// 转json字符串(productTypes);
+                    productTypesStr = JSON.toJSONString(productTypes);//TODO 转json字符串(productTypes);
                     redisClient.set("productTypes", productTypesStr);
-                } else {
-                    productTypes = JSONArray.parseArray(productTypesStr, ProductType.class);
+                }else{
+                    productTypes = JSONArray.parseArray(productTypesStr,ProductType.class);
                 }
                 return productTypes;
             }
         }
         //返回给前端 -- json字符串转java对象
-        productTypes = JSONArray.parseArray(productTypesStr, ProductType.class);// 转java集合(productTypesStr);
+        productTypes = JSONArray.parseArray(productTypesStr,ProductType.class);//TODO 转java集合(productTypesStr);
         return productTypes;
 
     }
@@ -95,19 +94,18 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
      * 方式一：递归
      * 不好：每次递归都要发送一次sql，效率太低，递归可读性太差，还可能会造成栈溢出
      * 能不适用递归尽量不使用递归
-     *
      * @param parentId
      * @return
      */
-    private List<ProductType> loadTypeTreeRecursive(Long parentId) {
+    private List<ProductType> loadTypeTreeRecursive(Long parentId){
         List<ProductType> productTypes =
-                baseMapper.selectList(new QueryWrapper<ProductType>().eq("pid", parentId));
-        if (productTypes == null) {
+                baseMapper.selectList(new QueryWrapper<ProductType>().eq("pid",parentId));
+        if(productTypes==null){
             return null;
         }
         for (ProductType productType : productTypes) {
             List<ProductType> children = loadTypeTreeRecursive(productType.getId());
-            if (children != null) {
+            if(children!=null){
                 productType.setChildren(children);
             }
         }
@@ -116,10 +114,9 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
 
     /**
      * 循环一
-     *
      * @return
      */
-    private List<ProductType> loadTypeTreeLoop() {
+    private List<ProductType> loadTypeTreeLoop(){
         //先查询所有
         List<ProductType> allProductTypes = baseMapper.selectList(null); //1000
         //再组装数据
@@ -127,13 +124,13 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         //  1000
         for (ProductType productType : allProductTypes) {
 
-            if (productType.getPid() == 0) {
+            if(productType.getPid()==0){
                 //如果你是一级类型，则放入firstLevelTypes
                 firstLevelTypes.add(productType);
-            } else {
+            }else{
                 //如果不是，放入父类型的children属性中   1000
                 for (ProductType parent : allProductTypes) {
-                    if (parent.getId().equals(productType.getPid())) {
+                    if(parent.getId().equals(productType.getPid())){
                         parent.getChildren().add(productType);
                     }
                 }
@@ -145,28 +142,27 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
 
     /**
      * 循环二
-     *
      * @return
      */
-    private List<ProductType> loadTypeTreeLoop2() {
+    private List<ProductType> loadTypeTreeLoop2(){
         //先查询所有
         List<ProductType> allProductTypes = baseMapper.selectList(null); //1000
         //再组装数据
         List<ProductType> firstLevelTypes = new ArrayList<>();
 
-        Map<Long, ProductType> productTypeMap = new HashMap<>();
+        Map<Long,ProductType> productTypeMap = new HashMap<>();
 
         //将所有的productType存入map中
         for (ProductType productType : allProductTypes) {
-            productTypeMap.put(productType.getId(), productType);
+            productTypeMap.put(productType.getId(),productType);
         }
 
         //再循环组装数据
         for (ProductType productType : allProductTypes) {
             //如果是一级
-            if (productType.getPid() == 0) {
+            if(productType.getPid()==0){
                 firstLevelTypes.add(productType);
-            } else {
+            }else{
                 //如果不是一级
                 ProductType parent = productTypeMap.get(productType.getPid());
                 parent.getChildren().add(productType);
@@ -193,19 +189,18 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     @Override
     public boolean updateById(ProductType entity) {
         boolean result = super.updateById(entity);
-        synchronizedOption();
-        ;
+        synchronizedOption();;
         return result;
     }
 
     /**
      * 增删改的同步操作
      */
-    private void synchronizedOption() {
+    private void synchronizedOption(){
         //同步redis的数据
         List<ProductType> productTypes = loadTypeTreeLoop2();
         String productTypesStr = JSON.toJSONString(productTypes);
-        redisClient.set("productTypes", productTypesStr);
+        redisClient.set("productTypes",productTypesStr);
         //生成home.html静态页面
         genHomePage();
     }

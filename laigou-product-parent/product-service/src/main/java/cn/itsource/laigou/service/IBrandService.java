@@ -11,11 +11,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author solargen
- * @since 2019-10-14
+ * @since 2019-10-12
  */
 public interface IBrandService extends IService<Brand> {
+
     /**
-     * 分页+高级查询
+     * 分页高级查询
      * @param query
      * @return
      */

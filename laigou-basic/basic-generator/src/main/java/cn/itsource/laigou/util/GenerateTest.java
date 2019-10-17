@@ -29,12 +29,13 @@ public class GenerateTest {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         //配置项目路径
-        final String projectPath = System.getProperty("user.dir"); //laigou-parent的根目录
+        final String projectPath = System.getProperty("user.dir"); //aigou-parent的根目录
         //加载配置文件
         gc.setOutputDir(projectPath + rb.getString("outputDir"));
         gc.setAuthor(rb.getString("author"));
         gc.setOpen(false);
         gc.setBaseResultMap(true);
+        gc.setFileOverride(true);
         mpg.setGlobalConfig(gc);
 
 
@@ -126,7 +127,7 @@ public class GenerateTest {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         //生成哪些表的代码
-        strategy.setInclude("t_brand","t_product_type","t_product");
+        strategy.setInclude("t_product","t_product_comment","t_product_ext","t_sku","t_specification");
         strategy.setTablePrefix("t_");
         mpg.setStrategy(strategy);
         mpg.execute();
