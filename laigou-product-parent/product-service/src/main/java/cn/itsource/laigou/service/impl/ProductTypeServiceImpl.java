@@ -41,16 +41,16 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     @Override
     public void genHomePage() {
         //先根据product.type.vm模板生成product.type.vm.html
-        String templatePath = "D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm";//模板路径
-        String targetPath = "D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm.html";
+        String templatePath = "D:\\ymsd\\aigou-parent\\aigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm";//模板路径
+        String targetPath = "D:\\ymsd\\aigou-parent\\aigou-product-parent\\product-service\\src\\main\\resources\\template\\product.type.vm.html";
         List<ProductType> productTypes = loadTypeTree();
         staticPageClient.generateStaticPage(templatePath,targetPath,productTypes);
 
         //再根据home.vm生成html.html
-        templatePath = "D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\template\\home.vm";
-        targetPath = "D:\\ymsd\\laigou-web-parent\\ecommerce\\home.html";
+        templatePath = "D:\\ymsd\\aigou-parent\\aigou-product-parent\\product-service\\src\\main\\resources\\template\\home.vm";
+        targetPath = "D:\\ymsd\\aigou-web-parent\\ecommerce\\home.html";
         Map<String,Object> model = new HashMap<>();
-        model.put("staticRoot","D:\\ymsd\\laigou-parent\\laigou-product-parent\\product-service\\src\\main\\resources\\");
+        model.put("staticRoot","D:\\ymsd\\aigou-parent\\aigou-product-parent\\product-service\\src\\main\\resources\\");
         staticPageClient.generateStaticPage(templatePath,targetPath,model);
     }
 
@@ -92,7 +92,7 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
 
     /**
      * 方式一：递归
-     * 不好：每次递归都要发送一次sql，效率太低，递归可读性太差，还可能会造成栈溢出
+     * 坏处：每次递归都要发送一次sql，效率太低，递归可读性太差，还可能会造成栈溢出
      * 能不适用递归尽量不使用递归
      * @param parentId
      * @return

@@ -8,9 +8,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/soft/apache-maven-3.3.9/bin" />
         <option name="userSettingsFile" value="D:\soft\apache-maven-3.3.9\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -23,7 +32,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/laigou-product-parent/product-service/src/main/java/cn/itsource/laigou/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/laigou-product-parent/product-service/src/main/resources/template" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -31,21 +40,22 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.14772727" />
     <property name="project.structure.side.proportion" value="0.25577417" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.other" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.itsource.laigou.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\java\cn\itsource\laigou\controller" />
-      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\java\cn\itsource\laigou\mapper" />
+      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\resources\template" />
+      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\resources\template\home" />
+      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-zuul\src\main\java\cn\itsource\laigou\config" />
       <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\java\cn\itsource\laigou\service\impl" />
       <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\java\cn\itsource\laigou\service" />
-      <recent name="C:\Program Files\JetBrains\IdeaProjects\laigou-parent\laigou-product-parent\product-service\src\main\resources\cn\itsource\laigou\mapper" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -88,6 +98,13 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itsource.laigou.CommonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="laigou-config-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itsource.laigou.ConfigServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GenerateTest" />
         <item itemvalue="Spring Boot.ProductApplicaiton" />
-        <item itemvalue="Spring Boot.ZuulApplication" />
-        <item itemvalue="Spring Boot.PlatApplication" />
         <item itemvalue="Spring Boot.CommonApplication" />
+        <item itemvalue="Spring Boot.PlatApplication" />
+        <item itemvalue="Spring Boot.ZuulApplication" />
+        <item itemvalue="Application.GenerateTest" />
       </list>
     </recent_temporary>
   </component>
@@ -156,12 +173,17 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afc6d676" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@ec03c150" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afc6d676" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@33102a26" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@ec03c150" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@1726af7d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@ec03c150" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@17cfeec2" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
           </expand>
           <select />
@@ -190,6 +212,11 @@
       <workItem from="1571312225027" duration="792000" />
       <workItem from="1571313031749" duration="2339000" />
       <workItem from="1571328349106" duration="2770000" />
+      <workItem from="1571369045826" duration="442000" />
+      <workItem from="1571369536543" duration="3532000" />
+      <workItem from="1571396078638" duration="8752000" />
+      <workItem from="1571641660204" duration="2175000" />
+      <workItem from="1571652975488" duration="6286000" />
     </task>
     <servers />
   </component>

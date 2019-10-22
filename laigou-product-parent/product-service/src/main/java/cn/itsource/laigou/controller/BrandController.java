@@ -6,8 +6,6 @@ import cn.itsource.laigou.query.BrandQuery;
 import cn.itsource.laigou.util.AjaxResult;
 import cn.itsource.laigou.util.PageList;
 import cn.itsource.laigou.util.StrUtils;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -91,7 +89,6 @@ public class BrandController {
         return brandService.list(null);
     }
 
-
     /**
     * 分页查询数据
     *
@@ -103,6 +100,5 @@ public class BrandController {
     {
         return brandService.queryPage(query);
     }
-
 
 }

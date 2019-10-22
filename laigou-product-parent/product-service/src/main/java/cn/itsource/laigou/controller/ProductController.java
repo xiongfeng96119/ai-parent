@@ -1,12 +1,14 @@
 package cn.itsource.laigou.controller;
 
+import cn.itsource.laigou.domain.Specification;
 import cn.itsource.laigou.service.IProductService;
 import cn.itsource.laigou.domain.Product;
 import cn.itsource.laigou.query.ProductQuery;
 import cn.itsource.laigou.util.AjaxResult;
 import cn.itsource.laigou.util.PageList;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import cn.itsource.laigou.util.StrUtils;
+import cn.itsource.laigou.vo.SkusVo;
+import feign.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,8 @@ import java.util.List;
 public class ProductController {
     @Autowired
     public IProductService productService;
+
+    //private Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     /**
     * 保存和修改公用的
@@ -84,4 +88,90 @@ public class ProductController {
     {
         return productService.queryPage(query);
     }
+
+    /**
+     * 根据商品ID查询商品的显示属性
+     * @param productId
+     * @return
+     */
+    @GetMapping("/viewProperties/{productId}")
+    public List<Specification> getViewProperties(@PathVariable("productId") Long productId){
+        return productService.getViewProperties(productId);
+    }
+
+
+    @PostMapping("/updateViewProperties")
+    public AjaxResult updateViewProperties(@RequestParam("productId")Long productId,
+                                           @RequestBody List<Specification> viewProperties){
+        try {
+            productService.saveViewProperties(productId,viewProperties);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("保存失败！"+e.getMessage());
+        }
+    }
+
+    /**
+     * 根据商品ID查询商品的显示属性
+     * @param productId
+     * @return
+     */
+    @GetMapping("/skuProperties/{productId}")
+    public List<Specification> getSkuProperties(@PathVariable("productId") Long productId){
+        return productService.getSkuProperties(productId);
+    }
+
+    /**
+     * 保存sku
+     * @param productId
+     * @param skusVo
+     * @return
+     */
+    @PostMapping("/updateSkuProperties")
+    public AjaxResult updateSkuProperties(@RequestParam("productId")Long productId,
+                                          @RequestBody SkusVo skusVo){
+        /*System.out.println(productId);
+        System.out.println(skusVo.getSkuProperties());
+        System.out.println(skusVo.getSkus());*/
+        productService.saveSkuProperties(productId,skusVo.getSkuProperties(),skusVo.getSkus());
+
+        return AjaxResult.me();
+    }
+
+    /**
+     * 批量上架
+     * @param ids
+     * @return
+     */
+    @GetMapping("onSale")
+    public AjaxResult onSale(@RequestParam("ids") String ids){
+        try {
+            List<Long> idList = StrUtils.splitStr2LongArr(ids);
+            productService.onSale(idList);
+            return AjaxResult.me().setMessage("上架成功！");
+        }catch (Exception e){
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("上架失败！"+e.getMessage());
+        }
+    }
+
+    /**
+     * 批量下架
+     * @param ids
+     * @return
+     */
+    @GetMapping("offSale")
+    public AjaxResult offSale(@RequestParam("ids") String ids){
+        try {
+            List<Long> idList = StrUtils.splitStr2LongArr(ids);
+            productService.offSale(idList);
+            return AjaxResult.me().setMessage("下架成功！");
+        }catch (Exception e){
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("下架失败！"+e.getMessage());
+        }
+    }
+
+
 }

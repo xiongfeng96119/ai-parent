@@ -1,6 +1,7 @@
 package cn.itsource.laigou.controller;
 
 import cn.itsource.laigou.util.AjaxResult;
+import cn.itsource.laigou.util.FastDfsApiOpr;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,18 +47,11 @@ public class FileController {
      */
     @DeleteMapping("/file")
     public AjaxResult delete(String fileId){
-        // fileId = /group1/M00/00/01/rBAEz12l5LGAYFq4AABT5bbowSw350.jpg
-        // group = group1
-        // fileName = M00/00/01/rBAEz12l5LGAYFq4AABT5bbowSw350.jpg
-
-
         try {
-            //     group1/M00/00/01/rBAEz12l5LGAYFq4AABT5bbowSw350.jpg
             fileId = fileId.substring(1);
             int index = fileId.indexOf("/");
             String group = fileId.substring(0,index);
             String fileName = fileId.substring(index+1);
-
             FastDfsApiOpr.delete(group, fileName);
             return AjaxResult.me().setSuccess(true).setMessage("文件删除成功!");
         } catch (Exception e) {

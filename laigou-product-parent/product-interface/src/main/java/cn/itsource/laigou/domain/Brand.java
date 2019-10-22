@@ -68,7 +68,7 @@ public class Brand implements Serializable {
      */
     private String logo;
 
-    @TableField(exist = false) // 操作表做增删改的时候忽略这个字段
+    @TableField(exist = false)
     private ProductType productType;
 
 }
